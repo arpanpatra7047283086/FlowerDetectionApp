@@ -1,11 +1,13 @@
 name: Android Build
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Fixes the deprecation warning
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -15,13 +17,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          # Removed 'cache: gradle' because android folder is not in git
+          # No cache here because android folder is generated later
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          # Cache disabled to prevent "file not found" errors
 
       - name: Install Dependencies
         run: npm install
