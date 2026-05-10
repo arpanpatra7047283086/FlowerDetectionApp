@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Suppresses the Node.js 20 warning
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22' # Using a newer version of Node
+          node-version: '22'
 
       - name: Install Dependencies
         run: npm install
@@ -28,11 +28,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: gradle
-          # Now that 'prebuild' has run, these files exist
-          cache-dependency-path: |
-            android/*.gradle*
-            android/gradle/wrapper/gradle-wrapper.properties
+          # Cache is completely removed to stop the 'No file matched' error
 
       - name: Build APK
         working-directory: ./android
