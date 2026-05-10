@@ -1,7 +1,7 @@
 name: Android Build
 on:
   push:
-    branches: [ master ] # Matches your local branch name
+    branches: [ master ]
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: gradle
+          # Removed 'cache: gradle' because android folder is not in git
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
