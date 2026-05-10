@@ -13,7 +13,8 @@
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.READ_EXTERNAL_STORAGE",
-        "android.permission.WRITE_EXTERNAL_STORAGE"
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.RECORD_AUDIO"
       ]
     },
     "plugins": [
@@ -24,6 +25,11 @@
           "cameraPermission": "The app accesses your camera to let you take photos of flowers."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "5fcd8f1f-060a-4618-bb06-59ea68d5aa29"
+      }
+    }
   }
 }
